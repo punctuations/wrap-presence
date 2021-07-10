@@ -1,5 +1,5 @@
 {
-	"name": "react.presence",
+	"name": "use-presence",
 	"description": "A react hook for presence.",
 	"version": "1.0.0",
 	"types": "./dist/index.d.ts",
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/punctuations/react.presence.git"
+		"url": "git+https://github.com/punctuations/use-presence.git"
 	},
 	"author": "Matt <matt@dont-ping.me> (https://dont-ping.me)",
 	"license": "MIT",
@@ -30,9 +30,9 @@
 		"fix": "eslint ./src/**/*.ts --fix"
 	},
 	"bugs": {
-		"url": "https://github.com/punctuations/react.presence/issues"
+		"url": "https://github.com/punctuations/use-presence/issues"
 	},
-	"homepage": "https://github.com/punctuations/react.presence#readme",
+	"homepage": "https://github.com/punctuations/use-presence#readme",
 	"files": [
 		"dist",
 		"package.json"
