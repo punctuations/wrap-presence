@@ -1,9 +1,9 @@
 # 🌙 use-presence
 #### An official react hook for [presence](https://presence.im).
 
----
-
 ### 📦 Installation
+
+---
 
 via NPM
 > npm i --save use-presence
