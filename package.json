@@ -1,44 +1,48 @@
 {
-	"name": "use-presence",
-	"description": "A react hook for presence.",
-	"version": "1.0.0",
-	"types": "./dist/index.d.ts",
-	"type": "module",
-	"exports": {
-		"import": "./dist/index.js",
-		"require": "./dist/index.cjs"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/punctuations/use-presence.git"
-	},
-	"author": "Matt <matt@dont-ping.me> (https://dont-ping.me)",
-	"license": "MIT",
-	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^4.26.1",
-		"@typescript-eslint/parser": "^4.26.1",
-		"eslint": "^7.28.0",
-		"eslint-config-xo": "^0.36.0",
-		"eslint-config-xo-typescript": "^0.41.1",
-		"prettier": "^2.3.1",
-		"tsup": "^4.11.2",
-		"typescript": "^4.2.4"
-	},
-	"scripts": {
-		"build": "tsup src/index.ts --dts --format esm,cjs",
-		"lint": "eslint ./src/**/*.ts",
-		"fix": "eslint ./src/**/*.ts --fix"
-	},
-	"bugs": {
-		"url": "https://github.com/punctuations/use-presence/issues"
-	},
-	"homepage": "https://github.com/punctuations/use-presence#readme",
-	"files": [
-		"dist",
-		"package.json"
-	],
-	"keywords": [
-		"node",
-		"template"
-	]
+  "name": "use-presence",
+  "description": "A react hook for presence.",
+  "version": "0.6.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "author": "Matt <matt@dont-ping.me>",
+  "module": "dist/use-presence.esm.js",
+  "repository": "git://github.com/punctuations/use-presence.git",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "lint": "tsdx lint src",
+    "prepare": "tsdx build"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.0.3"
+  },
+  "keywords": [
+    "react",
+    "react-hook",
+    "presence",
+    "use-hook"
+  ],
+  "dependencies": {}
 }
