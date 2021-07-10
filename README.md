@@ -1,4 +1,4 @@
-# 🌙 usePresence
+# 🌙 use-presence
 #### An official react hook for [presence](https://presence.im).
 
 ---
@@ -6,10 +6,10 @@
 ### 📦 Installation
 
 via NPM
-> npm i --save usePresence
+> npm i --save use-presence
 
 via yarn 
-> yarn add usePresence
+> yarn add use-presence
 
 ### ⌨️ Usage
 
