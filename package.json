@@ -1,7 +1,7 @@
 {
-	"name": "node-template",
-	"description": "An ESM node package template with ESLint, Prettier & TypeScript built in. Powered by esbuild.",
-	"version": "1.0.5",
+	"name": "react.presence",
+	"description": "A react hook for presence.",
+	"version": "1.0.0",
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"exports": {
@@ -10,14 +10,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/alii/node-template.git"
+		"url": "git+https://github.com/punctuations/react.presence.git"
 	},
-	"author": "Alistair Smith <alistairsmith01@gmail.com> (https://alistair.sh)",
+	"author": "Matt <matt@dont-ping.me> (https://dont-ping.me)",
 	"license": "MIT",
-	"funding": {
-		"type": "github",
-		"url": "https://github.com/sponsors/alii"
-	},
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^4.26.1",
 		"@typescript-eslint/parser": "^4.26.1",
@@ -34,9 +30,9 @@
 		"fix": "eslint ./src/**/*.ts --fix"
 	},
 	"bugs": {
-		"url": "https://github.com/alii/nextkit/issues"
+		"url": "https://github.com/punctuations/react.presence/issues"
 	},
-	"homepage": "https://github.com/alii/nextkit#readme",
+	"homepage": "https://github.com/punctuations/react.presence#readme",
 	"files": [
 		"dist",
 		"package.json"
