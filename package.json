@@ -43,5 +43,8 @@
     "react-hook",
     "presence",
     "use-hook"
-  ]
+  ],
+  "dependencies": {
+    "swr": "^0.5.6"
+  }
 }

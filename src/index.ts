@@ -1,3 +1,5 @@
+import useSWR from 'swr';
+
 interface PresenceResponse {
 	data: string | null;
 	error: string | null;
@@ -14,13 +16,13 @@ interface PresenceResponse {
 export async function usePresence(data: {platform: string; type: string; param: string; queries?: string | string[]}) {
 	const queries: string = data.queries ? Array.isArray(data.queries) ? `${data.queries.join('&')}` : `${data.queries}` : '';
 
-	const request = await fetch(`https://presence.im/api/${data.platform}/${data.type}/${data.param}${queries}`);
+	const {data: request, error: swrError} = useSWR(`https://presence.im/api/${data.platform}/${data.type}/${data.param}${queries}`);
 	const headers = request.headers.get('Content-Type');
 
-	const response: () => Promise<PresenceResponse | Blob | null> = async () => {
+	const response: () => PresenceResponse | Blob | null = () => {
 		switch (headers?.toLowerCase()) {
 			case 'application/json; charset=utf-8':
-				return await request.json() as PresenceResponse;
+				return request.json() as PresenceResponse;
 			case 'image/svg+xml; charset=utf-8':
 				return request.blob();
 			case 'image/png; charset=utf-8':
@@ -30,11 +32,11 @@ export async function usePresence(data: {platform: string; type: string; param: 
 		}
 	};
 
-	const error: () => Promise<PresenceResponse | false> = async () => {
-		return request.status === 500 ? await request.json() as PresenceResponse : false;
+	const error: () => PresenceResponse | false = () => {
+		return swrError || request.status === 500 ? request.json() as PresenceResponse : false;
 	};
 
-	const isLoading = !headers;
+	const isLoading = !data && !swrError;
 
 	return {data: response(), error: error(), isLoading};
 }
