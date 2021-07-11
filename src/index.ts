@@ -25,16 +25,16 @@ export function usePresence(data: {platform: string; type: string; param: string
 			case 'application/json; charset=utf-8':
 				return request?.data.json() as PresenceResponse;
 			case 'image/svg+xml; charset=utf-8':
-				return request?.data.blob();
+				return request?.data as Blob
 			case 'image/png; charset=utf-8':
-				return request?.data.blob();
+				return request?.data as Blob
 			default:
 				return null;
 		}
 	};
 
 	const error: () => PresenceResponse | false = () => {
-		return swrError || request?.status === 500 ? request?.data.json() as PresenceResponse : false;
+		return swrError || request?.status === 500 ? request?.data as PresenceResponse : false;
 	};
 
 	const isLoading = !data && !swrError;
