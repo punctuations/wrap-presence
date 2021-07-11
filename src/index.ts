@@ -13,7 +13,7 @@ interface PresenceResponse {
  * @param data.param The parameter, usually the username or id, ex. "atmattt".
  * @param data.queries Optional query parameters, ex. ["type=base64", "theme-dark"].
  */
-export async function usePresence(data: {platform: string; type: string; param: string; queries?: string | string[]}) {
+export function usePresence(data: {platform: string; type: string; param: string; queries?: string | string[]}) {
 	const queries: string = data.queries ? Array.isArray(data.queries) ? `${data.queries.join('&')}` : `${data.queries}` : '';
 
 	const {data: request, error: swrError} = useSWR(`https://presence.im/api/${data.platform}/${data.type}/${data.param}${queries}`);
