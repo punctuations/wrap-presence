@@ -1,4 +1,5 @@
 import useSWR from 'swr';
+import axios from 'axios';
 
 interface PresenceResponse {
 	data: string | null;
@@ -16,24 +17,24 @@ interface PresenceResponse {
 export function usePresence(data: {platform: string; type: string; param: string; queries?: string | string[]}) {
 	const queries: string = data.queries ? Array.isArray(data.queries) ? `${data.queries.join('&')}` : `${data.queries}` : '';
 
-	const {data: request, error: swrError} = useSWR(`https://presence.im/api/${data.platform}/${data.type}/${data.param}${queries}`);
-	const headers = request.headers.get('Content-Type');
+	const {data: request, error: swrError} = useSWR(`https://presence.im/api/${data.platform}/${data.type}/${data.param}${queries}`, url => axios.head(url));
+	const headers = request?.headers.get('Content-Type');
 
 	const response: () => PresenceResponse | Blob | null = () => {
 		switch (headers?.toLowerCase()) {
 			case 'application/json; charset=utf-8':
-				return request.json() as PresenceResponse;
+				return request?.data.json() as PresenceResponse;
 			case 'image/svg+xml; charset=utf-8':
-				return request.blob();
+				return request?.data.blob();
 			case 'image/png; charset=utf-8':
-				return request.blob();
+				return request?.data.blob();
 			default:
 				return null;
 		}
 	};
 
 	const error: () => PresenceResponse | false = () => {
-		return swrError || request.status === 500 ? request.json() as PresenceResponse : false;
+		return swrError || request?.status === 500 ? request?.data.json() as PresenceResponse : false;
 	};
 
 	const isLoading = !data && !swrError;

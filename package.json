@@ -45,6 +45,7 @@
     "use-hook"
   ],
   "dependencies": {
+    "axios": "^0.21.1",
     "swr": "^0.5.6"
   }
 }
