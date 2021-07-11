@@ -18,7 +18,7 @@ export function usePresence(data: {platform: string; type: string; param: string
 	const queries: string = data.queries ? Array.isArray(data.queries) ? `${data.queries.join('&')}` : `${data.queries}` : '';
 
 	const {data: request, error: swrError} = useSWR(`https://presence.im/api/${data.platform}/${data.type}/${data.param}${queries}`, url => axios.head(url));
-	const headers = request?.headers.get('Content-Type');
+	const headers = request?.headers['Content-Type'];
 
 	const response: () => PresenceResponse | Blob | null = () => {
 		switch (headers?.toLowerCase()) {
