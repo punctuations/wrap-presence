@@ -7,7 +7,7 @@ interface PresenceResponse {
 }
 
 /**
- *
+ * Use Presence
  * @param data The data which is parameters which is used to send a fetch request to the api.
  * @param data.platform The platform name, ex. "twitter".
  * @param data.type The type of data, ex. "user", a full list can be found on [docs.presence.im](https://docs.presence.im).
@@ -15,7 +15,7 @@ interface PresenceResponse {
  * @param data.queries Optional query parameters, ex. ["type=base64", "theme-dark"].
  */
 export function usePresence(data: {platform: string; type: string; param: string; queries?: string | string[]}) {
-	const queries: string = data.queries ? Array.isArray(data.queries) ? `${data.queries.join('&')}` : `${data.queries}` : '';
+	const queries: string = data.queries ? Array.isArray(data.queries) ? `?${data.queries.join('&')}` : `?${data.queries}` : '';
 
 	const {data: request, error: swrError} = useSWR(`https://presence.im/api/${data.platform}/${data.type}/${data.param}${queries}`, url => axios.head(url));
 	const headers = request?.headers['content-type'];
