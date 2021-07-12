@@ -4,15 +4,15 @@ interface PresenceResponse {
 }
 
 /**
- *
+ * wrap-presence
  * @param data The data which is parameters which is used to send a fetch request to the api.
  * @param data.platform The platform name, ex. "twitter".
  * @param data.type The type of data, ex. "user", a full list can be found on [docs.presence.im](https://docs.presence.im).
  * @param data.param The parameter, usually the username or id, ex. "atmattt".
  * @param data.queries Optional query parameters, ex. ["type=base64", "theme-dark"].
  */
-export async function usePresence(data: {platform: string; type: string; param: string; queries?: string | string[]}) {
-	const queries: string = data.queries ? Array.isArray(data.queries) ? `${data.queries.join('&')}` : `${data.queries}` : '';
+export async function wrapPresence(data: {platform: string; type: string; param: string; queries?: string | string[]}) {
+	const queries: string = data.queries ? Array.isArray(data.queries) ? `?${data.queries.join('&')}` : `?${data.queries}` : '';
 
 	const request = await fetch(`https://presence.im/api/${data.platform}/${data.type}/${data.param}${queries}`);
 	const headers = request.headers.get('Content-Type');

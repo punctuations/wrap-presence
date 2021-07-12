@@ -1,13 +1,13 @@
 {
-  "name": "use-presence",
+  "name": "wrap-presence",
   "description": "A react hook for presence.",
-  "version": "0.6.1",
+  "version": "0.7.7",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "author": "Matt <matt@dont-ping.me>",
-  "module": "dist/use-presence.esm.js",
-  "repository": "git://github.com/punctuations/use-presence.git",
+  "module": "dist/wrap-presence.esm.js",
+  "repository": "git://github.com/punctuations/wrap-presence.git",
   "files": [
     "dist",
     "src"
@@ -39,10 +39,7 @@
     "typescript": "^4.0.3"
   },
   "keywords": [
-    "react",
-    "react-hook",
-    "presence",
-    "use-hook"
-  ],
-  "dependencies": {}
+    "wrapper",
+    "presence"
+  ]
 }

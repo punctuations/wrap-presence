@@ -1,31 +1,31 @@
-# 🌙 use-presence
-#### An official react hook for [presence](https://presence.im).
+# 🌙 wrap-presence
+#### An official wrapper for [presence](https://presence.im).
 
 ### 📦 Installation
 
 ---
 
 via NPM
-> npm i --save use-presence
+> npm i --save wrap-presence
 
 via yarn 
-> yarn add use-presence
+> yarn add wrap-presence
 
 ### ⌨️ Usage
 
 ----
 
 ```tsx
-import { usePresence } from 'use-presence';
+import { wrapPresence } from 'wrap-presence';
 
-const Presence = () => {
+const Presence = async () => {
 	const req = {
 		platform: 'twitter',
 		type: 'user',
 		params: 'atmattt',
 	};
 	
-	const {data, error, isLoading} = usePresence(req);
+	const {data, error, isLoading} =  await wrapPresence(req);
 
 	if (isLoading) {
 		return <p>Loading...</p>
